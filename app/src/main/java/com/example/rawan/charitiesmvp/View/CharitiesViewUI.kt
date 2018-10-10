@@ -6,7 +6,7 @@ import com.example.rawan.charitiesmvp.Model.APICall.CharitiesData
 /**
  * Created by rawan on 08/10/18.
  */
-interface ViewUI{
+interface CharitiesViewUI{
     fun makeRetrofitAPICall()
     fun makeDatabaseCall()
     fun setData(list: List<CharitiesData>)

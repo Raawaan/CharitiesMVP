@@ -15,6 +15,8 @@ interface CharitiesDao {
 //                                                "organization_desc=:organization_desc," +
 //                                                "organization_pic=:organization_pic)")
 //    fun INSERT(organization_name:String,organization_type:String,organization_desc:String,organization_pic:String)
+@Insert
+fun insertUser(userEntry: CharitiesEntity)
         @Query("Select * from Charities ORDER BY id")
         fun loadAllUsers(): List<CharitiesEntity>
 }

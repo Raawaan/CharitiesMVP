@@ -21,7 +21,7 @@
         <activity android:name=".DetailedActivity" />
 
         <receiver
-            android:name=".MyReceiver"
+            android:name=".InternetConnectionReceiver"
             android:enabled="true"
             android:exported="true"></receiver>
     </application>

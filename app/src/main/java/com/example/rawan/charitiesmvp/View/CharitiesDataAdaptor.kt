@@ -1,4 +1,4 @@
-package com.example.rawan.charitiesmvp.Model
+package com.example.rawan.charitiesmvp.View
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.content.view.*
 /**
  * Created by rawan on 08/10/18.
  */
-class MyAdaptor(private var allData: List<CharitiesData>, val clickListener:(CharitiesData)->Unit) : RecyclerView.Adapter<MyAdaptor.CharitiesViewHolder>() {
+class CharitiesDataAdaptor(private var allData: List<CharitiesData>, val clickListener:(CharitiesData)->Unit) : RecyclerView.Adapter<CharitiesDataAdaptor.CharitiesViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, p1: Int): CharitiesViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.content,parent,false)
         return CharitiesViewHolder(view)
