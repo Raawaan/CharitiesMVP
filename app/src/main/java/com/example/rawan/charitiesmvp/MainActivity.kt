@@ -8,16 +8,18 @@ import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.widget.Toast
 import com.example.rawan.charitiesmvp.Model.APICall.CharitiesData
-import com.example.rawan.charitiesmvp.Model.CharitiesDataModel
-import com.example.rawan.charitiesmvp.View.CharitiesDataAdaptor
+import com.example.rawan.charitiesmvp.Model.APICall.RetrofitCall
+import com.example.rawan.charitiesmvp.Model.APICall.CharitiesRemoteModel
+import com.example.rawan.charitiesmvp.Model.RoomDatabase.CharitiesLocalModel
 import com.example.rawan.charitiesmvp.Presenter.CharitiesDataPresenterImpl
 import com.example.rawan.charitiesmvp.Presenter.CharitiesDataPresenter
+import com.example.rawan.charitiesmvp.View.CharitiesDataAdaptor
 import com.example.rawan.charitiesmvp.View.CharitiesViewUI
 import com.facebook.stetho.Stetho
 import kotlinx.android.synthetic.main.activity_main.*
 
 
-class MainActivity : AppCompatActivity(),CharitiesViewUI,InternetConnectionReceiver.ConnectivityReceiverListener {
+class MainActivity : AppCompatActivity(), CharitiesViewUI, InternetConnectionReceiver.ConnectivityReceiverListener {
     private lateinit var charitiesDataPresenter:CharitiesDataPresenter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,7 +27,7 @@ class MainActivity : AppCompatActivity(),CharitiesViewUI,InternetConnectionRecei
         registerReceiver(InternetConnectionReceiver(),
                 IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION))
         Stetho.initializeWithDefaults(this)
-        charitiesDataPresenter= CharitiesDataPresenterImpl(CharitiesDataModel(),this)
+        charitiesDataPresenter= CharitiesDataPresenterImpl(CharitiesRemoteModel(RetrofitCall.createBuilder()), CharitiesLocalModel(),this)
 //        makeRetrofitAPICall()
 
     }
